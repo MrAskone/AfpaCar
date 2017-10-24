@@ -24,6 +24,15 @@ Rectangle{
         x: parent.width * 0.05
         spacing: 10
 
+
+        Row{
+            Text{
+                text: "Contact Information"
+                width: 50
+                font.pixelSize: 20
+            }
+        }
+
         Row{
             spacing: 25
             Text{
@@ -108,14 +117,13 @@ Rectangle{
         }
 
         Row{
-            spacing: 25
-
             Text{
                 text: "Address"
                 width: 50
                 font.pixelSize: 20
             }
         }
+
         Row{
             spacing: 25
 
@@ -182,6 +190,16 @@ Rectangle{
                 placeholderText: "postcode"
                 width: signupPage1Title.width * 0.7
                 height: 25
+            }
+        }
+
+        Row{
+            spacing: 25
+
+            Text{
+                text: "Log in ID"
+                width: 50
+                font.pixelSize: 20
             }
         }
 

@@ -8,7 +8,7 @@ class Admin: public User
 {
 public:
     Admin();
-    Admin(const std::string &name, const std::string &firstName, const std::string &username, const std::string &password, QDate dob, Address *address);
+    Admin(const std::string &name, const std::string &firstName, const std::string &username, const std::string &password, const int &phoneNumber, const std::string &email, const QDate &dob, Address* address);
 
 private:
 
