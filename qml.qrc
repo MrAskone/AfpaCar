@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>MyButton.qml</file>
+        <file>JSControls.js</file>
+        <file>NavButton.qml</file>
+        <file>LoginPage.qml</file>
+        <file>SignUpPage1.qml</file>
+        <file>HomePage.qml</file>
+    </qresource>
+</RCC>
