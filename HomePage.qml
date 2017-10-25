@@ -26,7 +26,7 @@ Rectangle{
         anchors.margins: 10
 
         Row{
-            spacing: 10
+            spacing: container.width * 0.01
             x: container.width/2 - 5 - 100
 
             MyButton{

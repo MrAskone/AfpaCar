@@ -19,7 +19,8 @@ SOURCES += main.cpp \
     postcode.cpp \
     address.cpp \
     availability.cpp \
-    city.cpp
+    city.cpp \
+    profile.cpp
 
 RESOURCES += qml.qrc
 
@@ -41,4 +42,5 @@ HEADERS += \
     postcode.h \
     address.h \
     availability.h \
-    city.h
+    city.h \
+    profile.h

@@ -22,22 +22,22 @@ Rectangle{
     Column{
         anchors.top: signupPage1Title.bottom
         x: parent.width * 0.05
-        spacing: 10
+        spacing: container.width * 0.01
 
 
         Row{
             Text{
                 text: "Contact Information"
-                width: 50
+                width: container.width * 0.15
                 font.pixelSize: 20
             }
         }
 
         Row{
-            spacing: 25
+            spacing: container.width * 0.025
             Text{
-                text: "Surname\t:"
-                width: 50
+                text: "Surname"
+                width: container.width * 0.15
                 height: 25
                 verticalAlignment: Text.AlignVCenter
             }
@@ -49,10 +49,10 @@ Rectangle{
             }
         }
         Row{
-            spacing: 25
+            spacing: container.width * 0.025
             Text{
-                text: "First Name\t:"
-                width: 50
+                text: "First Name"
+                width: container.width * 0.15
                 height: 25
                 verticalAlignment: Text.AlignVCenter
             }
@@ -66,10 +66,10 @@ Rectangle{
         }
 
         Row{
-            spacing: 25
+            spacing: container.width * 0.025
             Text{
                 text: "Sexe"
-                width: 50
+                width: container.width * 0.15
                 height: 25
                 verticalAlignment: Text.AlignVCenter
             }
@@ -83,10 +83,10 @@ Rectangle{
         }
 
         Row{
-            spacing: 25
+            spacing: container.width * 0.025
             Text{
                 text: "Email"
-                width: 50
+                width: container.width * 0.15
                 height: 25
                 verticalAlignment: Text.AlignVCenter
             }
@@ -100,10 +100,10 @@ Rectangle{
         }
 
         Row{
-            spacing: 25
+            spacing: container.width * 0.025
             Text{
                 text: "Phone"
-                width: 50
+                width: container.width * 0.15
                 height: 25
                 verticalAlignment: Text.AlignVCenter
             }
@@ -119,17 +119,17 @@ Rectangle{
         Row{
             Text{
                 text: "Address"
-                width: 50
+                width: container.width * 0.15
                 font.pixelSize: 20
             }
         }
 
         Row{
-            spacing: 25
+            spacing: container.width * 0.025
 
             Text{
                 text: "Street Number"
-                width: 50
+                width: container.width * 0.15
                 height: 25
                 verticalAlignment: Text.AlignVCenter
             }
@@ -143,10 +143,10 @@ Rectangle{
         }
 
         Row{
-            spacing: 25
+            spacing: container.width * 0.025
             Text{
                 text: "Street Type"
-                width: 50
+                width: container.width * 0.15
                 height: 25
                 verticalAlignment: Text.AlignVCenter
             }
@@ -160,10 +160,10 @@ Rectangle{
         }
 
         Row{
-            spacing: 25
+            spacing: container.width * 0.025
             Text{
                 text: "Street Name"
-                width: 50
+                width: container.width * 0.15
                 height: 25
                 verticalAlignment: Text.AlignVCenter
             }
@@ -177,10 +177,10 @@ Rectangle{
         }
 
         Row{
-            spacing: 25
+            spacing: container.width * 0.025
             Text{
                 text: "Postcode"
-                width: 50
+                width: container.width * 0.15
                 height: 25
                 verticalAlignment: Text.AlignVCenter
             }
@@ -194,20 +194,20 @@ Rectangle{
         }
 
         Row{
-            spacing: 25
+            spacing: container.width * 0.025
 
             Text{
                 text: "Log in ID"
-                width: 50
+                width: container.width * 0.15
                 font.pixelSize: 20
             }
         }
 
         Row{
-            spacing: 25
+            spacing: container.width * 0.025
             Text{
                 text: "Username"
-                width: 50
+                width: container.width * 0.15
                 height: 25
                 verticalAlignment: Text.AlignVCenter
             }
@@ -221,10 +221,10 @@ Rectangle{
         }
 
         Row{
-            spacing: 25
+            spacing: container.width * 0.025
             Text{
                 text: "Password"
-                width: 50
+                width: container.width * 0.15
                 height: 25
                 verticalAlignment: Text.AlignVCenter
             }
@@ -238,10 +238,10 @@ Rectangle{
         }
 
         Row{
-            spacing: 25
+            spacing: container.width * 0.025
             Text{
                 text: "Confirm\nPassword"
-                width: 50
+                width: container.width * 0.15
                 height: 25
                 verticalAlignment: Text.AlignVCenter
             }
@@ -256,7 +256,7 @@ Rectangle{
 
         Row{
             y: 10
-            spacing: 10
+            spacing: container.width * 0.01
 
             MyButton{
                 id: submitButton

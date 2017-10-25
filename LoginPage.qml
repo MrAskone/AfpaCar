@@ -31,14 +31,14 @@ Rectangle{
             Text{
                 text: "username:"
                 width: 40
-                height: 25
+                height: container.width * 0.025
                 verticalAlignment: Text.AlignVCenter
             }
 
             TextField{
                 placeholderText: "username"
                 width: 100
-                height: 25
+                height: container.width * 0.025
             }
         }
         Row{
@@ -48,14 +48,14 @@ Rectangle{
             Text{
                 text: "password:"
                 width: 40
-                height: 25
+                height: container.width * 0.025
                 verticalAlignment: Text.AlignVCenter
             }
 
             TextField{
                 placeholderText: "password"
                 width: 100
-                height: 25
+                height: container.width * 0.025
             }
         }
 
