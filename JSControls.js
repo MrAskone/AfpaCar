@@ -13,3 +13,7 @@ function changeWindowTo(windowName){
     windowName.visible = true
 
 }
+
+var passwordRegExp = /^[a-zA-Z0-9!@#$%\^&*)(+=._-]*$/
+
+var Phone = /^[0-9!@#$%\^&*)(+=._-]*$/

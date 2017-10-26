@@ -31,14 +31,16 @@ Rectangle{
             Text{
                 text: "username:"
                 width: 40
-                height: container.width * 0.025
+                height: 25
                 verticalAlignment: Text.AlignVCenter
             }
 
             TextField{
                 placeholderText: "username"
                 width: 100
-                height: container.width * 0.025
+                height: 25
+                validator:  RegExpValidator{ regExp: /[a-z A-Z]+/ }
+                maximumLength: 16
             }
         }
         Row{
@@ -48,17 +50,37 @@ Rectangle{
             Text{
                 text: "password:"
                 width: 40
-                height: container.width * 0.025
+                height: 25
                 verticalAlignment: Text.AlignVCenter
             }
 
             TextField{
+                echoMode: "Password"
                 placeholderText: "password"
                 width: 100
-                height: container.width * 0.025
+                height: 25
+
+                maximumLength: 12
             }
         }
+        Row{
+            spacing: container.width * 0.01
+            x: container.width/2 - 5 - 100
 
+            MyButton{
+                text: "Log in"
+                onClicked: {
+                    console.log("log in")
+                }
+            }
+            MyButton{
+                text: "Sign Up"
+                onClicked: {
+                    JSC.changeWindowTo(signupPage1)
+                    console.log("Sign up")
+                }
+            }
+        }
     }
 
     NavButton{

@@ -46,6 +46,7 @@ Rectangle{
                 placeholderText: "surname"
                 width: signupPage1Title.width * 0.7
                 height: 25
+                validator:  RegExpValidator{ regExp: /[a-z A-Z]+/ }
             }
         }
         Row{
@@ -62,6 +63,7 @@ Rectangle{
                 placeholderText: "first name"
                 width: signupPage1Title.width * 0.7
                 height: 25
+                validator:  RegExpValidator{ regExp: /[a-z A-Z]+/ }
             }
         }
 
@@ -96,6 +98,7 @@ Rectangle{
                 placeholderText: "email@server.com"
                 width: signupPage1Title.width * 0.7
                 height: 25
+                validator: RegExpValidator{ regExp: /([a-z A-Z 0-9 _.-]+)([@])([a-z A-Z .])+/ }
             }
         }
 
@@ -113,6 +116,8 @@ Rectangle{
                 placeholderText: "xx.xx.xx.xx.xx"
                 width: signupPage1Title.width * 0.7
                 height: 25
+                validator:  RegExpValidator{ regExp: /[0-9]+/ }
+                maximumLength: 10
             }
         }
 
@@ -139,6 +144,7 @@ Rectangle{
                 placeholderText: "street number"
                 width: signupPage1Title.width * 0.7
                 height: 25
+                validator:  RegExpValidator{ regExp: /[a-z A-Z 0-9]+/ }
             }
         }
 
@@ -156,6 +162,7 @@ Rectangle{
                 placeholderText: "street type (avenue, street, road...)"
                 width: signupPage1Title.width * 0.7
                 height: 25
+                validator:  RegExpValidator{ regExp: /[a-z A-Z]+/ }
             }
         }
 
@@ -173,6 +180,7 @@ Rectangle{
                 placeholderText: "street name"
                 width: signupPage1Title.width * 0.7
                 height: 25
+                validator:  RegExpValidator{ regExp: /[a-z A-Z]+/ }
             }
         }
 
@@ -190,6 +198,8 @@ Rectangle{
                 placeholderText: "postcode"
                 width: signupPage1Title.width * 0.7
                 height: 25
+                validator:  RegExpValidator{ regExp: /[0-9]+/ }
+                maximumLength: 5
             }
         }
 
@@ -217,6 +227,7 @@ Rectangle{
                 placeholderText: "username"
                 width: signupPage1Title.width * 0.7
                 height: 25
+                validator:  RegExpValidator{ regExp: /[a-z A-Z]+/ }
             }
         }
 
@@ -232,8 +243,10 @@ Rectangle{
             TextField{
                 id: passwordTF
                 placeholderText: "password"
+                echoMode: "Password"
                 width: signupPage1Title.width * 0.7
                 height: 25
+                maximumLength: 12
             }
         }
 
@@ -249,8 +262,11 @@ Rectangle{
             TextField{
                 id: password2TF
                 placeholderText: "confirm password"
+                echoMode: "Password"
                 width: signupPage1Title.width * 0.7
                 height: 25
+                maximumLength: 12
+                validator: RegExpValidator{ regExp: /([a-z A-Z 0-9 _.-]+)/ }
             }
         }
 

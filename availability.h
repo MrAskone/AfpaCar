@@ -20,6 +20,7 @@ public:
 private:
 
     std::string m_weekday;
+
     QTime m_time;
 
 };
