@@ -39,4 +39,4 @@ HEADERS += \
     trip.h \
     address.h \
     availability.h \
-   profile.h
+    profile.h
