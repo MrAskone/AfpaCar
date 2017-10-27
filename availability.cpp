@@ -6,7 +6,7 @@ using namespace std;
 Availability::Availability()
 {}
 
-Availability::Availability(const string &weekday, const QTime &time): m_weekday(weekday), m_time(time)
+Availability::Availability(const string &weekday, const int &weeknumber, const QTime &time): m_weekday(weekday), m_weeknumber(weeknumber), m_time(time)
 {}
 
 std::string Availability::getWeekday() const
@@ -17,6 +17,16 @@ std::string Availability::getWeekday() const
 void Availability::setWeekday(const std::string &weekday)
 {
     m_weekday = weekday;
+}
+
+int Availability::getWeeknumber() const
+{
+    return m_weeknumber;
+}
+
+void Availability::setWeeknumber(int weeknumber)
+{
+    m_weeknumber = weeknumber;
 }
 
 QTime Availability::getTime() const
