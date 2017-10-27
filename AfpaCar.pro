@@ -16,10 +16,8 @@ SOURCES += main.cpp \
     admin.cpp \
     user.cpp \
     trip.cpp \
-    postcode.cpp \
     address.cpp \
     availability.cpp \
-    city.cpp \
     profile.cpp
 
 RESOURCES += qml.qrc
@@ -39,8 +37,6 @@ HEADERS += \
     admin.h \
     user.h \
     trip.h \
-    postcode.h \
     address.h \
     availability.h \
-    city.h \
-    profile.h
+   profile.h

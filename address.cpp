@@ -7,8 +7,8 @@ using namespace std;
 Address::Address()
 {}
 
-Address::Address(const int &streetNumber, const string &streetType, const string &streetName, PostCode *postCode):
-    m_streetNumber(streetNumber), m_streetType(streetType), m_streetName(streetName), m_postcode(postCode)
+Address::Address(const int &streetNumber, const std::string &streetType, const std::string &streetName, const std::string &postcode, const std::string &city):
+    m_streetNumber(streetNumber), m_streetType(streetType), m_streetName(streetName), m_postcode(postcode), m_city(city)
 {}
 
 
@@ -45,6 +45,26 @@ std::string Address::getStreetType() const
 void Address::setStreetType(const std::string &streetType)
 {
     m_streetType = streetType;
+}
+
+std::string Address::getPostcode() const
+{
+    return m_postcode;
+}
+
+void Address::setPostcode(const std::string &postcode)
+{
+    m_postcode = postcode;
+}
+
+std::string Address::getCity() const
+{
+    return m_city;
+}
+
+void Address::setCity(const std::string &value)
+{
+    m_city = value;
 }
 
 

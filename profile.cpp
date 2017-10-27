@@ -12,8 +12,8 @@ Profile::Profile()
     m_dob = QDate (01, 01, 1980);
 }
 
-Profile::Profile(const string &name, const string &firstName, const string &phoneNumber, const string &email, const QDate &dob):
-    m_name(name), m_firstName(firstName), m_phoneNumber(phoneNumber) , m_email(email), m_dob(dob)
+Profile::Profile(const string &name, const string &firstName, const string &phoneNumber, const string &email, const QDate &dob,  Address* myAddress):
+    m_name(name), m_firstName(firstName), m_phoneNumber(phoneNumber) , m_email(email), m_dob(dob), m_myAddress(myAddress)
 {
 
 }

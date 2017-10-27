@@ -12,7 +12,7 @@ class User
 {
 public:
     User();
-    User::User(const std::string &username, const std::string &password);
+    User::User(const std::string &username, const std::string &password, Profile* profile);
 
     std::string getName() const;
     void setName(const std::string &name);
@@ -26,8 +26,8 @@ public:
     std::string getPassword() const;
     void setPassword(const std::string &password);
 
-    Profile getProfile() const;
-    void setProfile(const Profile &profile);
+    Profile* getProfile() const;
+    void setProfile(Profile *profile);
 
 
 private:
@@ -35,7 +35,7 @@ private:
 
     std::string m_username;
     std::string m_password;
-    Profile m_profile;
+    Profile* m_profile;
 
 
 

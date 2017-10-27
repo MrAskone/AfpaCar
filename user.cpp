@@ -9,8 +9,8 @@ User::User()
 
 }
 
-User::User::User(const string &username, const string &password):
-    m_username(username), m_password(password)
+User::User::User(const string &username, const string &password, Profile* profile):
+    m_username(username), m_password(password), m_profile(profile)
 {}
 
 
@@ -29,12 +29,12 @@ std::string User::getPassword() const
 void User::setPassword(const std::string &password)
 { m_password = password; }
 
-Profile User::getProfile() const
+Profile* User::getProfile() const
 {
     return m_profile;
 }
 
-void User::setProfile(const Profile &profile)
+void User::setProfile( Profile *profile)
 {
     m_profile = profile;
 }

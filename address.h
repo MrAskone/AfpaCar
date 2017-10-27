@@ -4,7 +4,6 @@
 #include <vector>
 
 #include "user.h"
-#include "postcode.h"
 
 
 
@@ -13,7 +12,7 @@ class Address
 public:
     Address();
 
-    Address(const int &streetNumber, const std::string &streetType, const std::string &streetName, PostCode* postCode);
+    Address(const int &streetNumber, const std::string &streetType, const std::string &streetName, const std::string &postcode, const std::string &city);
 
     int getStreetNumber() const;
     void setStreetNumber(int streetNumber);
@@ -24,13 +23,19 @@ public:
     std::string getStreetType() const;
     void setStreetType(const std::string &streetType);
 
+    std::string getPostcode() const;
+    void setPostcode(const std::string &postcode);
+
+    std::string getCity() const;
+    void setCity(const std::string &value);
 
 private:
 
     int m_streetNumber;
     std::string m_streetType;
     std::string m_streetName;
-    PostCode* m_postcode;
+    std::string m_postcode;
+    std::string m_city;
 
 
 };

@@ -9,14 +9,6 @@ using namespace std;
 int main(int argc, char *argv[])
 {
 
-
-    Profile antoine;
-
-    User kossa ("kossa", "mangesushi");
-
-    kossa.setProfile(antoine);
-
-    kossa.getProfile().display();
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;

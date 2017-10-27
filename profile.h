@@ -1,13 +1,18 @@
 #ifndef PROFILE_H
 #define PROFILE_H
 #include <string>
+#include <vector>
 #include <QDate>
+
+#include "address.h"
+
+class Address;
 
 class Profile
 {
 public:
     Profile();
-    Profile(const std::string &name, const std::string &firstName, const std::string &phoneNumber, const std::string &email, const QDate &dob);
+    Profile(const std::string &name, const std::string &firstName, const std::string &phoneNumber, const std::string &email, const QDate &dob,  Address* myAddress);
 
 
     void display() const;
@@ -31,10 +36,14 @@ private:
 
     std::string m_name;
     std::string m_firstName;
-
     std::string m_phoneNumber;
     std::string m_email;
     QDate m_dob;
+
+    Address* m_myAddress;
+
+    std::vector<Address*> m_addressList;
+
 
 };
 

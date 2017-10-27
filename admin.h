@@ -8,7 +8,7 @@ class Admin: public User
 {
 public:
     Admin();
-    Admin(const std::string &username, const std::string &password);
+    Admin(const std::string &username, const std::string &password, Profile* profile);
 
 private:
 
