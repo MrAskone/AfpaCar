@@ -2,32 +2,36 @@
 #define AVAILABILITY_H
 
 #include <QObject>
+#include <QString>
 #include <QTime>
 
 class Availability : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(std::string weekDay READ getWeekDay WRITE setWeekDay NOTIFY weekDayChanged)
     Q_PROPERTY(int weekNumber READ getWeekNumber WRITE setWeekNumber NOTIFY weekNumberChanged)
+    Q_PROPERTY(QString weekDay READ getWeekDay WRITE setWeekDay NOTIFY weekDayChanged)
     Q_PROPERTY(QTime time READ getTime WRITE setTime NOTIFY timeChanged)
 
-    std::string m_weekDay;
     int m_weekNumber;
+    QString m_weekDay;
     QTime m_time;
 
 public:
     explicit Availability(QObject *parent = nullptr);
 
+    Availability (const int &weekNumber, const QString &weekDay, const QTime &time, QObject *parent = 0);
 
+    Availability* createCopy();
 
-    std::string getWeekDay() const
-    {
-        return m_weekDay;
-    }
 
     int getWeekNumber() const
     {
         return m_weekNumber;
+    }
+
+    QString getWeekDay() const
+    {
+        return m_weekDay;
     }
 
     QTime getTime() const
@@ -38,9 +42,9 @@ public:
 signals:
 
 
-    void weekDayChanged(std::string weekDay);
-
     void weekNumberChanged(int weekNumber);
+
+    void weekDayChanged(QString weekDay);
 
     void timeChanged(QTime time);
 
@@ -48,22 +52,23 @@ signals:
 public slots:
 
 
-    void setWeekDay(std::string weekDay)
+    void setWeekNumber(int weekNumber)
+    {
+//        int weekNumber = weekNumberInString.toInt();
+        if (m_weekNumber == weekNumber)
+            return;
+
+        m_weekNumber = weekNumber;
+        emit weekNumberChanged(m_weekNumber);
+    }
+
+    void setWeekDay(QString weekDay)
     {
         if (m_weekDay == weekDay)
             return;
 
         m_weekDay = weekDay;
         emit weekDayChanged(m_weekDay);
-    }
-
-    void setWeekNumber(int weekNumber)
-    {
-        if (m_weekNumber == weekNumber)
-            return;
-
-        m_weekNumber = weekNumber;
-        emit weekNumberChanged(m_weekNumber);
     }
 
     void setTime(QTime time)

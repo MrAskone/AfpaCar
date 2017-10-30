@@ -3,18 +3,21 @@
 
 using namespace std;
 
-Trip::Trip()
-{}
-
-Trip::Trip(const QTime &arrivalTime): m_arrivalTime(arrivalTime)
-{}
-
-QTime Trip::getArrivalTime() const
+Trip::Trip(QObject *parent) : QObject(parent)
 {
-    return m_arrivalTime;
+        cout << "Trip()" << endl;
 }
 
-void Trip::setArrivalTime(const QTime &arrivalTime)
+
+Trip::Trip(const QTime &arrivalTime, QObject *parent):
+    m_arrivalTime(arrivalTime), QObject(parent)
 {
-    m_arrivalTime = arrivalTime;
+
+}
+
+Trip *Trip::createCopy()
+{
+    Trip* newTrip = new Trip();
+    newTrip->setArrivalTime( getArrivalTime());
+    return newTrip;
 }

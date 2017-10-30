@@ -70,17 +70,48 @@ Rectangle{
         Row{
             spacing: container.width * 0.025
             Text{
-                text: "Sexe"
+                text: "Gender"
+                width: container.width * 0.15
+                height: 25
+                verticalAlignment: Text.AlignVCenter
+            }
+
+            ButtonGroup {
+                buttons: genderTF.children
+            }
+
+            Row {
+                id: genderTF
+                height: 25
+
+                RadioButton {
+                    id: maleRadio
+                    text: "Male"
+                    y: -8
+                }
+                RadioButton {
+                    id: femaleRadio
+                    text: "Female"
+                    y: -8
+                }
+            }
+        }
+
+        Row{
+            spacing: container.width * 0.025
+            Text{
+                text: "Date of Birth"
                 width: container.width * 0.15
                 height: 25
                 verticalAlignment: Text.AlignVCenter
             }
 
             TextField{
-                id: sexeTF
-                placeholderText: "sexe"
+                id: dobTF
+                placeholderText: "DD/MM/YYYY"
                 width: signupPage1Title.width * 0.7
                 height: 25
+                validator: RegExpValidator{ regExp: /[0-9]{2}\/[0-9]{2}\/[0-9]{4}/ }
             }
         }
 
@@ -116,8 +147,7 @@ Rectangle{
                 placeholderText: "xx.xx.xx.xx.xx"
                 width: signupPage1Title.width * 0.7
                 height: 25
-                validator:  RegExpValidator{ regExp: /[0-9]+/ }
-                maximumLength: 10
+                validator: RegExpValidator{ regExp: /[0-9]{2}\.[0-9]{2}\.[0-9]{2}\.[0-9]{2}\.[0-9]{2}/ }
             }
         }
 
@@ -205,6 +235,24 @@ Rectangle{
 
         Row{
             spacing: container.width * 0.025
+            Text{
+                text: "City"
+                width: container.width * 0.15
+                height: 25
+                verticalAlignment: Text.AlignVCenter
+            }
+
+            TextField{
+                id: cityTF
+                placeholderText: "city"
+                width: signupPage1Title.width * 0.7
+                height: 25
+                validator:  RegExpValidator{ regExp: /[a-z A-Z '-]+/ }
+            }
+        }
+
+        Row{
+            spacing: container.width * 0.025
 
             Text{
                 text: "Log in ID"
@@ -277,11 +325,47 @@ Rectangle{
             MyButton{
                 id: submitButton
                 text: "Submit"
+
+                onClicked: {
+                    if (passwordTF.text != password2TF.text)
+                    {
+                        submitPopup.open()
+                    }
+
+                    //                    else if(MyContext.listOfUsers)
+                    //                    {
+
+                    //                    }
+
+                    else
+                    {
+                        JSC.submit()
+                        MyContext.sendActionToCpp("Submit")
+                        JSC.changeWindowTo(loginPage)
+                    }
+                }
             }
 
             MyButton{
                 id: clearButton
                 text: "Clear"
+            }
+            Popup{
+                id: submitPopup
+                x: 200
+                y: 40
+
+                width: 200
+                height: 40
+                modal: true
+                focus: true
+                //                z: 2
+                //                closePolicy: Popup.OnEscape | Popup.OnPressOutside
+
+                Text{
+                    text: "Passwords don't match!"
+                }
+
             }
         }
     }

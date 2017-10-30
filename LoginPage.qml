@@ -36,6 +36,7 @@ Rectangle{
             }
 
             TextField{
+                id: loginUsername
                 placeholderText: "username"
                 width: 100
                 height: 25
@@ -55,6 +56,7 @@ Rectangle{
             }
 
             TextField{
+                id: loginPassword
                 echoMode: "Password"
                 placeholderText: "password"
                 width: 100
@@ -70,7 +72,18 @@ Rectangle{
             MyButton{
                 text: "Log in"
                 onClicked: {
-                    console.log("log in")
+                    console.log("log in attempt")
+                    MyContext.sendActionToCpp("Log In", loginUsername.text, loginPassword.text)
+
+                    if (MyContext.popUpMessage == "Access Granted")
+                    {
+                        console.log("gg man!")
+                    }
+
+                    else
+                    {
+                        console.log("You fcking failure")
+                    }
                 }
             }
             MyButton{

@@ -3,40 +3,22 @@
 
 using namespace std;
 
-
-User::User()
+User::User(QObject *parent) : QObject(parent)
 {
-
+    cout << "User()" << endl;
 }
 
-User::User::User(const string &username, const string &password, Profile* profile):
-    m_username(username), m_password(password), m_profile(profile)
-{}
-
-
-std::string User::getUsername() const
-{ return m_username; }
-
-
-void User::setUsername(const std::string &username)
-{ m_username = username; }
-
-
-std::string User::getPassword() const
-{ return m_password; }
-
-
-void User::setPassword(const std::string &password)
-{ m_password = password; }
-
-Profile* User::getProfile() const
+User::User::User(const QString &username, const QString &password, Profile *profile, QObject *parent):
+    m_username(username), m_password(password), m_profile(profile), QObject(parent)
 {
-    return m_profile;
+    cout << "User() + arg" << endl;
 }
 
-void User::setProfile( Profile *profile)
+User* User::createCopy()
 {
-    m_profile = profile;
+    User* newUser = new User();
+    newUser->setUsername( getUsername() );
+    newUser->setPassword( getPassword() );
+    newUser->setProfile( getProfile() );
+    return newUser;
 }
-
-

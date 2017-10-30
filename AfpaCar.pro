@@ -13,12 +13,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += main.cpp \
-    admin.cpp \
-    user.cpp \
-    trip.cpp \
     address.cpp \
     availability.cpp \
-    profile.cpp
+    profile.cpp \
+    mycontext.cpp \
+    trip.cpp \
+    user.cpp
 
 RESOURCES += qml.qrc
 
@@ -34,9 +34,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    admin.h \
-    user.h \
-    trip.h \
     address.h \
     availability.h \
-    profile.h
+    profile.h \
+    mycontext.h \
+    trip.h \
+    user.h

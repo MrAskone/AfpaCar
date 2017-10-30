@@ -2,69 +2,77 @@
 #define ADDRESS_H
 
 #include <QObject>
+#include <QString>
+#include <QDebug>
 
 class Address : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(int streetNumber READ getStreetNumber WRITE setStreetNumber NOTIFY streetNumberChanged)
-    Q_PROPERTY(std::string streetType READ getStreetType WRITE setStreetType NOTIFY streetTypeChanged)
-    Q_PROPERTY(std::string streetName READ getStreetName WRITE setStreetName NOTIFY streetNameChanged)
-    Q_PROPERTY(std::string postcode READ getPostcode WRITE setPostcode NOTIFY postcodeChanged)
-    Q_PROPERTY(std::string city READ getCity WRITE setCity NOTIFY cityChanged)
+    Q_PROPERTY(QString streetNumber READ getStreetNumber WRITE setStreetNumber NOTIFY streetNumberChanged)
+    Q_PROPERTY(QString streetType READ getStreetType WRITE setStreetType NOTIFY streetTypeChanged)
+    Q_PROPERTY(QString streetName READ getStreetName WRITE setStreetName NOTIFY streetNameChanged)
+    Q_PROPERTY(QString postcode READ getPostcode WRITE setPostcode NOTIFY postcodeChanged)
+    Q_PROPERTY(QString city READ getCity WRITE setCity NOTIFY cityChanged)
 
-    int m_streetNumber;
-    std::string m_streetType;
-    std::string m_streetName;
-    std::string m_postcode;
-    std::string m_city;
+    QString m_streetNumber;
+    QString m_streetType;
+    QString m_streetName;
+    QString m_postcode;
+    QString m_city;
 
 public:
     explicit Address(QObject *parent = nullptr);
 
-    Address(const Address &addressLambda);
+    Address( const QString &streetNumber, const QString &streetType,
+             const QString &streetName, const QString &postCode,
+             const QString &city ,QObject *parent = 0 );
+
+    Address* createCopy();
+
+    //    Address(const Address &addressLambda);
 
 
-    int getStreetNumber() const
+    QString getStreetNumber() const
     {
         return m_streetNumber;
     }
 
-    std::string getStreetType() const
+    QString getStreetType() const
     {
         return m_streetType;
     }
 
-    std::string getStreetName() const
+    QString getStreetName() const
     {
         return m_streetName;
     }
 
-    std::string getPostcode() const
+    QString getPostcode() const
     {
         return m_postcode;
     }
 
-    std::string getCity() const
+    QString getCity() const
     {
         return m_city;
     }
 
 signals:
 
-    void streetNumberChanged(int streetNumber);
+    void streetNumberChanged(QString streetNumber);
 
-    void streetTypeChanged(std::string streetType);
+    void streetTypeChanged(QString streetType);
 
-    void streetNameChanged(std::string streetName);
+    void streetNameChanged(QString streetName);
 
-    void postcodeChanged(std::string postcode);
+    void postcodeChanged(QString postcode);
 
-    void cityChanged(std::string city);
+    void cityChanged(QString city);
 
 public slots:
 
-    void setStreetNumber(int streetNumber)
+    void setStreetNumber(QString streetNumber)
     {
         if (m_streetNumber == streetNumber)
             return;
@@ -73,7 +81,7 @@ public slots:
         emit streetNumberChanged(m_streetNumber);
     }
 
-    void setStreetType(std::string streetType)
+    void setStreetType(QString streetType)
     {
         if (m_streetType == streetType)
             return;
@@ -81,15 +89,17 @@ public slots:
         m_streetType = streetType;
         emit streetTypeChanged(m_streetType);
     }
-    void setStreetName(std::string streetName)
+    void setStreetName(QString streetName)
     {
+        qDebug() << "changed streetname";
+
         if (m_streetName == streetName)
             return;
 
         m_streetName = streetName;
         emit streetNameChanged(m_streetName);
     }
-    void setPostcode(std::string postcode)
+    void setPostcode(QString postcode)
     {
         if (m_postcode == postcode)
             return;
@@ -97,7 +107,7 @@ public slots:
         m_postcode = postcode;
         emit postcodeChanged(m_postcode);
     }
-    void setCity(std::string city)
+    void setCity(QString city)
     {
         if (m_city == city)
             return;
