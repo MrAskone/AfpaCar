@@ -329,6 +329,7 @@ Rectangle{
                 onClicked: {
                     if (passwordTF.text != password2TF.text)
                     {
+                        MyContext.setPopUpMessage("Passwords don't match!")
                         submitPopup.open()
                     }
 
@@ -337,11 +338,16 @@ Rectangle{
 
                     //                    }
 
+                    else if (!JSC.allFieldsAreFilled())
+                    {
+                        submitPopup.open()
+                    }
+
                     else
                     {
                         JSC.submit()
                         MyContext.sendActionToCpp("Submit")
-                        JSC.changeWindowTo(loginPage)
+                        MyContext.setPopUpMessage("User Created!")
                     }
                 }
             }
@@ -354,16 +360,20 @@ Rectangle{
                 id: submitPopup
                 x: 200
                 y: 40
-
                 width: 200
                 height: 40
                 modal: true
                 focus: true
-                //                z: 2
-                //                closePolicy: Popup.OnEscape | Popup.OnPressOutside
+
 
                 Text{
-                    text: "Passwords don't match!"
+                    text: MyContext.popUpMessage
+                }
+                onClosed: {
+                    if(MyContext.popUpMessage == "User Created")
+                    {
+                        JSC.changeWindowTo(loginPage)
+                    }
                 }
 
             }

@@ -17,24 +17,67 @@ function changeWindowTo(windowName){
 function allFieldsAreFilled(){
 
     var checkAllFields = true
-    var message = "The following fields were not filled:"
+    var message = "The following fields were not filled properly:"
 
-    if ( surnameTF.length == 0 )
+    if ( surnameTF.text.length == 0 )
     {
         checkAllFields = false
         message += " Surname."
     }
 
-    if( firstnameTF.length != 0 )
+    if( firstnameTF.text.length == 0 )
     {
         checkAllFields = false
         message += " First Name."
     }
-            && (maleRadio.checked || femaleRadio.checked)
-            && dobTF.length == 10
-            && emailTF.indexOf("@") != -1 && emailTF.indexOf(".") != -1 && emailTF.length > 6
-            && )
+    if ( !maleRadio.checked && !femaleRadio.checked )
+    {
+        checkAllFields = false
+        message += " Gender."
+    }
 
+    if ( dobTF.text.length < 10 )
+    {
+        checkAllFields = false
+        message += " Date of Birth."
+    }
+
+    if ( emailTF.text.indexOf("@") == -1 || emailTF.text.indexOf(".") == -1 || emailTF.text.length < 6)
+    {
+        checkAllFields = false
+        message += " Email."
+    }
+
+    if ( phoneTF.text.length < 10 )
+    {
+        checkAllFields = false
+        message += " Phone Number"
+    }
+
+    if ( streetnumberTF.text.length == 0 || streettypeTF.text.length == 0 || streetnameTF.text.length == 0 || postcodeTF.text.length < 5 || cityTF.text.length == 0 )
+    {
+        checkAllFields = false
+        message += " Address."
+    }
+
+    if ( usernameTF.text.length < 6 )
+    {
+        checkAllFields = false
+        message += " Username."
+    }
+
+    if (passwordTF.text.length < 8)
+    {
+        checkAllFields = false
+        message += " Password."
+    }
+
+    if (checkAllFields == false)
+    {
+        MyContext.setPopUpMessage(message)
+    }
+
+    return checkAllFields
 
 }
 
