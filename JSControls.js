@@ -116,6 +116,9 @@ function submit(){
 
         MyContext.user.username = usernameTF.text
         MyContext.user.password = passwordTF.text
+
+        console.log("Switching to Log In Page")
+        changeWindowTo(loginPage)
     }
 }
 
