@@ -11,17 +11,17 @@ Rectangle{
     visible: false
 
     Text{
-        id: signupPage1Title
+        id: profilePageTitle
         height: parent.height * 0.1
         width: parent.width
-        text: "Sign up Form"
+        text: "Your Profile"
         font.pixelSize: 23
         horizontalAlignment: Text.AlignHCenter
     }
 
     Column{
-        anchors.top: signupPage1Title.bottom
-        x: parent.width * 0.05
+        anchors.top: profilePageTitle.bottom
+        x: container.width * 0.05
         spacing: container.width * 0.01
 
 
@@ -41,13 +41,24 @@ Rectangle{
                 height: 25
                 verticalAlignment: Text.AlignVCenter
             }
+
             TextField{
-                id: surnameTF
-                placeholderText: "surname"
-                width: signupPage1Title.width * 0.7
+                id: mySurnameTF
+                visible: false
+                placeholderText: MyContext.profile.surname
+                width: container.width * 0.7
                 height: 25
                 validator:  RegExpValidator{ regExp: /[a-z A-Z]+/ }
             }
+
+            Text{
+                id: mySurname
+                visible: true
+                text: MyContext.profile.surname
+                width: container.width * 0.7
+                height: 25
+            }
+
         }
         Row{
             spacing: container.width * 0.025
@@ -59,11 +70,19 @@ Rectangle{
             }
 
             TextField{
-                id: firstnameTF
-                placeholderText: "first name"
-                width: signupPage1Title.width * 0.7
+                id: myFirstnameTF
+                visible: false
+                placeholderText: MyContext.profile.firstName
+                width: container.width * 0.7
                 height: 25
                 validator:  RegExpValidator{ regExp: /[a-z A-Z]+/ }
+            }
+            Text{
+                id: myFirstname
+                visible: true
+                text: MyContext.profile.firstName
+                width: container.width * 0.7
+                height: 25
             }
         }
 
@@ -77,22 +96,38 @@ Rectangle{
             }
 
             ButtonGroup {
-                buttons: genderTF.children
+                buttons: myGenderTF.children
             }
 
             Row {
-                id: genderTF
+                id: myGenderTF
                 height: 25
 
                 RadioButton {
-                    id: maleRadio
+                    id: myMaleRadio
                     text: "Male"
                     y: -8
+                    checkable: false
+                    checked: {
+                        if(MyContext.profile.gender == "Male")
+                        {true}
+
+                        else
+                        {false}
+                    }
                 }
                 RadioButton {
-                    id: femaleRadio
+                    id: myFemaleRadio
                     text: "Female"
                     y: -8
+                    checkable: false
+                    checked: {
+                        if(MyContext.profile.gender == "Female")
+                        {true}
+
+                        else
+                        {false}
+                    }
                 }
             }
         }
@@ -107,11 +142,19 @@ Rectangle{
             }
 
             TextField{
-                id: dobTF
-                placeholderText: "DD/MM/YYYY"
-                width: signupPage1Title.width * 0.7
+                id: myDobTF
+                visible: false
+                placeholderText: MyContext.profile.dob
+                width: container.width * 0.7
                 height: 25
                 validator: RegExpValidator{ regExp: /[0-9]{2}\/[0-9]{2}\/[0-9]{4}/ }
+            }
+            Text{
+                id: myDob
+                visible: true
+                text: MyContext.profile.dob
+                width: container.width * 0.7
+                height: 25
             }
         }
 
@@ -125,11 +168,19 @@ Rectangle{
             }
 
             TextField{
-                id: emailTF
-                placeholderText: "email@server.com"
-                width: signupPage1Title.width * 0.7
+                id: myEmailTF
+                visible: false
+                placeholderText: MyContext.profile.email
+                width: container.width * 0.7
                 height: 25
                 validator: RegExpValidator{ regExp: /([a-z A-Z 0-9 _.-]+)([@])([a-z A-Z .])+/ }
+            }
+            Text{
+                id: myEmail
+                visible: true
+                text: MyContext.profile.email
+                width: container.width * 0.7
+                height: 25
             }
         }
 
@@ -143,11 +194,20 @@ Rectangle{
             }
 
             TextField{
-                id: phoneTF
-                placeholderText: "xx.xx.xx.xx.xx"
-                width: signupPage1Title.width * 0.7
+                id: myPhoneTF
+                visible: false
+                placeholderText: MyContext.profile.phoneNumber
+                width: container.width * 0.7
                 height: 25
                 validator: RegExpValidator{ regExp: /[0-9]{2}\.[0-9]{2}\.[0-9]{2}\.[0-9]{2}\.[0-9]{2}/ }
+            }
+
+            Text{
+                id: myPhone
+                visible: true
+                text: MyContext.profile.phoneNumber
+                width: container.width * 0.7
+                height: 25
             }
         }
 
@@ -170,11 +230,20 @@ Rectangle{
             }
 
             TextField{
-                id: streetnumberTF
-                placeholderText: "street number"
-                width: signupPage1Title.width * 0.7
+                id: myStreetnumberTF
+                visible: false
+                placeholderText: MyContext.address.streetNumber
+                width: container.width * 0.7
                 height: 25
                 validator:  RegExpValidator{ regExp: /[a-z A-Z 0-9]+/ }
+            }
+
+            Text{
+                id: myStreetnumber
+                visible: true
+                text: MyContext.address.streetNumber
+                width: container.width * 0.7
+                height: 25
             }
         }
 
@@ -188,11 +257,20 @@ Rectangle{
             }
 
             TextField{
-                id: streettypeTF
-                placeholderText: "street type (avenue, street, road...)"
-                width: signupPage1Title.width * 0.7
+                id: myStreettypeTF
+                visible: false
+                text: MyContext.address.streetType
+                width: container.width * 0.7
                 height: 25
                 validator:  RegExpValidator{ regExp: /[a-z A-Z]+/ }
+            }
+
+            Text{
+                id: myStreettype
+                visible: true
+                text: MyContext.address.streetType
+                width: container.width * 0.7
+                height: 25
             }
         }
 
@@ -206,11 +284,20 @@ Rectangle{
             }
 
             TextField{
-                id: streetnameTF
-                placeholderText: "street name"
-                width: signupPage1Title.width * 0.7
+                id: myStreetnameTF
+                visible: false
+                placeholderText: MyContext.address.streetName
+                width: container.width * 0.7
                 height: 25
                 validator:  RegExpValidator{ regExp: /[a-z A-Z]+/ }
+            }
+
+            Text{
+                id: myStreetname
+                visible: true
+                text: MyContext.address.streetName
+                width: container.width * 0.7
+                height: 25
             }
         }
 
@@ -224,12 +311,21 @@ Rectangle{
             }
 
             TextField{
-                id: postcodeTF
-                placeholderText: "postcode"
-                width: signupPage1Title.width * 0.7
+                id: myPostcodeTF
+                visible: false
+                placeholderText: MyContext.address.postcode
+                width: container.width * 0.7
                 height: 25
                 validator:  RegExpValidator{ regExp: /[0-9]+/ }
                 maximumLength: 5
+            }
+
+            Text{
+                id: myPostcode
+                visible: true
+                text: MyContext.address.postcode
+                width: container.width * 0.7
+                height: 25
             }
         }
 
@@ -243,126 +339,55 @@ Rectangle{
             }
 
             TextField{
-                id: cityTF
-                placeholderText: "city"
-                width: signupPage1Title.width * 0.7
+                id:myCityTF
+                visible: false
+                placeholderText: MyContext.address.city
+                width: container.width * 0.7
                 height: 25
                 validator:  RegExpValidator{ regExp: /[a-z A-Z '-]+/ }
             }
-        }
-
-        Row{
-            spacing: container.width * 0.025
 
             Text{
-                text: "Log in ID"
-                width: container.width * 0.15
-                font.pixelSize: 20
-            }
-        }
-
-        Row{
-            spacing: container.width * 0.025
-            Text{
-                text: "Username"
-                width: container.width * 0.15
+                id: myCity
+                visible: true
+                text: MyContext.address.city
+                width: container.width * 0.7
                 height: 25
-                verticalAlignment: Text.AlignVCenter
             }
-
-            TextField{
-                id: usernameTF
-                placeholderText: "username"
-                width: signupPage1Title.width * 0.7
-                height: 25
-                validator:  RegExpValidator{ regExp: /[a-z A-Z]+/ }
-            }
-        }
-
-        Row{
-            spacing: container.width * 0.025
-            Text{
-                text: "Password"
-                width: container.width * 0.15
-                height: 25
-                verticalAlignment: Text.AlignVCenter
-            }
-
-            TextField{
-                id: passwordTF
-                placeholderText: "password"
-                echoMode: "Password"
-                width: signupPage1Title.width * 0.7
-                height: 25
-                maximumLength: 12
-            }
-        }
-
-        Row{
-            spacing: container.width * 0.025
-            Text{
-                text: "Confirm\nPassword"
-                width: container.width * 0.15
-                height: 25
-                verticalAlignment: Text.AlignVCenter
-            }
-
-            TextField{
-                id: password2TF
-                placeholderText: "confirm password"
-                echoMode: "Password"
-                width: signupPage1Title.width * 0.7
-                height: 25
-                maximumLength: 12
-                validator: RegExpValidator{ regExp: /([a-z A-Z 0-9 _.-]+)/ }
-            }
-        }
-
-        Row{
+        }Row{
             y: 10
             spacing: container.width * 0.01
 
             MyButton{
-                id: submitButton
-                text: "Submit"
+                id: editProfileButton
+                text: "Edit Profile"
 
                 onClicked: {
-                    if (passwordTF.text != password2TF.text)
-                    {
-                        MyContext.setPopUpMessage("Passwords don't match!")
-                        submitPopup.open()
-                    }
-
-                    //                    else if(MyContext.listOfUsers)
-                    //                    {
-
-                    //                    }
-
-                    else if (!JSC.allFieldsAreFilled())
-                    {
-                        submitPopup.open()
-                    }
-
-                    else
-                    {
-                        JSC.submit()
-                        MyContext.sendActionToCpp("Submit")
-                        MyContext.setPopUpMessage("User Created!")
-                        submitPopup.open()
-                    }
+                    JSC.editModeOn()
                 }
             }
 
             MyButton{
-                id: clearButton
-                text: "Clear"
+                id: acceptChangesButton
+                visible: false
+                text: "Save Changes"
 
                 onClicked: {
-                    JSC.clearAllFields()
+                    JSC.editModeOff()
+                }
+            }
+
+            MyButton{
+                id: discardChangesButton
+                visible: false
+                text: "Discard Changes"
+
+                onClicked: {
+                    JSC.editModeOff()
                 }
             }
             Popup{
-                id: submitPopup
+                id: loginPopup
                 x: 200
                 y: 40
                 width: 200
@@ -373,13 +398,6 @@ Rectangle{
 
                 Text{
                     text: MyContext.popUpMessage
-                }
-                onClosed: {
-                    if(MyContext.popUpMessage == "User Created!")
-                    {
-                        JSC.changeWindowTo(loginPage)
-                        JSC.clearAllFields()
-                    }
                 }
             }
         }

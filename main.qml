@@ -30,5 +30,9 @@ Window {
             id: signupPage1
         }
 
+        ProfilePage{
+            id: profilePage
+        }
+
     }
 }

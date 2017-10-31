@@ -7,5 +7,6 @@
         <file>LoginPage.qml</file>
         <file>SignUpPage1.qml</file>
         <file>HomePage.qml</file>
+        <file>ProfilePage.qml</file>
     </qresource>
 </RCC>

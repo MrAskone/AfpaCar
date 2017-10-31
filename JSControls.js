@@ -10,6 +10,7 @@ function changeWindowTo(windowName){
     loginPage.visible = false
     homePage.visible = false
     signupPage1.visible = false
+    profilePage.visible =false
     windowName.visible = true
 
 }
@@ -118,9 +119,109 @@ function submit(){
         MyContext.user.password = passwordTF.text
 
         console.log("Switching to Log In Page")
-        changeWindowTo(loginPage)
+//        changeWindowTo(loginPage)
     }
 }
 
+function clearAllFields(){
 
+    surnameTF.text = ""
+    firstnameTF.text = ""
+    maleRadio.checked = false
+    femaleRadio.checked = false
+    dobTF.text = ""
+    emailTF.text = ""
+    phoneTF.text = ""
+    streetnumberTF.text = ""
+    streettypeTF.text = ""
+    streetnameTF.text = ""
+    postcodeTF.text = ""
+    cityTF.text = ""
+    usernameTF.text = ""
+    passwordTF.text = ""
+    password2TF.text = ""
 
+    console.log("Sign up form cleared")
+}
+
+function editModeOn(){
+
+    editProfileButton.visible = false
+    acceptChangesButton.visible = true
+    discardChangesButton.visible = true
+
+    mySurnameTF.visible = true
+    mySurname.visible = false
+
+    myFirstnameTF.visible = true
+    myFirstname.visible = false
+
+    myMaleRadio.checkable = true
+    myFemaleRadio.checkable = true
+
+    myDobTF.visible = true
+    myDob.visible = false
+
+    myEmailTF.visible = true
+    myEmail.visible = false
+
+    myPhoneTF.visible = true
+    myPhone.visible = false
+
+    myStreetnumberTF.visible = true
+    myStreetnumber.visible = false
+
+    myStreettypeTF.visible = true
+    myStreettype.visible = false
+
+    myStreetnameTF.visible = true
+    myStreetname.visible = false
+
+    myPostcodeTF.visible = true
+    myPostcode.visible = false
+
+    myCityTF.visible = true
+    myCity.visible = false
+
+}
+
+function editModeOff(){
+
+    editProfileButton.visible = true
+    acceptChangesButton.visible = false
+    discardChangesButton.visible = false
+
+    mySurnameTF.visible = false
+    mySurname.visible = true
+
+    myFirstnameTF.visible = false
+    myFirstname.visible = true
+
+    myMaleRadio.checkable = false
+    myFemaleRadio.checkable = true
+
+    myDobTF.visible = false
+    myDob.visible = true
+
+    myEmailTF.visible = false
+    myEmail.visible = true
+
+    myPhoneTF.visible = false
+    myPhone.visible = true
+
+    myStreetnumberTF.visible = false
+    myStreetnumber.visible = true
+
+    myStreettypeTF.visible = false
+    myStreettype.visible = true
+
+    myStreetnameTF.visible = false
+    myStreetname.visible = true
+
+    myPostcodeTF.visible = false
+    myPostcode.visible = true
+
+    myCityTF.visible = false
+    myCity.visible = true
+
+}

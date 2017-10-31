@@ -11,7 +11,7 @@ class Profile : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(QString name READ getName WRITE setName NOTIFY nameChanged)
+    Q_PROPERTY(QString surname READ getSurname WRITE setSurname NOTIFY surnameChanged)
     Q_PROPERTY(QString firstName READ getFirstName WRITE setFirstName NOTIFY firstNameChanged)
     Q_PROPERTY(QString gender READ getGender WRITE setGender NOTIFY genderChanged)
     Q_PROPERTY(QString phoneNumber READ getPhoneNumber WRITE setPhoneNumber NOTIFY phoneNumberChanged)
@@ -20,7 +20,7 @@ class Profile : public QObject
     Q_PROPERTY(Address* address READ getAddress WRITE setAddress NOTIFY addressChanged)
 
 
-    QString m_name;
+    QString m_surname;
     QString m_firstName;
     QString m_gender;
     QString m_phoneNumber;
@@ -32,7 +32,7 @@ class Profile : public QObject
 public:
     explicit Profile(QObject *parent = nullptr);
 
-    Profile(const QString &name, const QString &firstName, const QString &gender,
+    Profile(const QString &surname, const QString &firstName, const QString &gender,
             const QString &dob, const QString &email, const QString &phoneNumber,
              Address* address, QObject *parent = 0);
 
@@ -41,9 +41,9 @@ public:
     std::vector<Address*> m_addressList;
 
 
-    QString getName() const
+    QString getSurname() const
     {
-        return m_name;
+        return m_surname;
     }
 
     QString getFirstName() const
@@ -78,7 +78,7 @@ public:
 
 signals:
 
-    void nameChanged(QString name);
+    void surnameChanged(QString surname);
 
     void firstNameChanged(QString firstName);
 
@@ -94,13 +94,13 @@ signals:
 
 
 public slots:
-    void setName(QString name)
+    void setSurname(QString name)
     {
-        if (m_name == name)
+        if (m_surname == name)
             return;
 
-        m_name = name;
-        emit nameChanged(m_name);
+        m_surname = name;
+        emit surnameChanged(m_surname);
     }
 
     void setFirstName(QString firstName)

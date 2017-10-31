@@ -3,13 +3,13 @@
 
 MyContext::MyContext(QObject *parent) : QObject(parent), m_myContext(nullptr)
 {
-    m_address = new Address(this);
+    m_address = new Address("7", "rue", "Poitevine", "34000", "Montpellier");
     m_availability = new Availability(this);
-    m_profile = new Profile(this);
+    m_profile = new Profile("Kossa", "Bamako", "Male", "25/07/1982", "master.of.bamako@gmail.com", "09.45.27.12.90", m_address);
     m_trip = new Trip(this);
-    m_user = new User(this);
+    m_user = new User("kobamako", "cubanito", m_profile);
     m_popUpMessage = "";
-//    m_listOfUsers
+    m_listOfUsers.push_back(m_user);
 
 
 }
@@ -70,6 +70,11 @@ void MyContext::sendActionToCpp(QString nomAction, QString parameter, QString pa
                 if (user->getPassword() == parameter2)
                 {
                     setPopUpMessage("Access Granted");
+                    qDebug() << "Logged in";
+                    m_user = user;
+                    m_profile = m_user->getProfile();
+                    m_address = m_profile->getAddress();
+                    return;
                 }
                 else
                 {
@@ -77,9 +82,9 @@ void MyContext::sendActionToCpp(QString nomAction, QString parameter, QString pa
                     return;
                 }
             }
-
-            qDebug() << "Logged in";
         }
+        qDebug() << "User" << parameter << "does not exist";
+        setPopUpMessage("Access Denied:\nThe Username or Password is incorrect.");
     }
 
 }

@@ -77,20 +77,33 @@ Rectangle{
 
                     if (MyContext.popUpMessage == "Access Granted")
                     {
-                        console.log("gg man!")
+                        JSC.changeWindowTo(profilePage)
                     }
 
                     else
                     {
-                        console.log("You fcking failure")
+                        loginPopup.open()
                     }
                 }
             }
             MyButton{
                 text: "Sign Up"
                 onClicked: {
-                    JSC.changeWindowTo(signupPage1)
+                    JSC.changeWindowTo(loginPage)
                     console.log("Sign up")
+                }
+            }
+            Popup{
+                id: loginPopup
+                x: 200
+                y: 40
+                width: 200
+                height: 40
+                modal: true
+                focus: true
+
+                Text{
+                    text: MyContext.popUpMessage
                 }
             }
         }
