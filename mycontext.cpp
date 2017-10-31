@@ -87,6 +87,20 @@ void MyContext::sendActionToCpp(QString nomAction, QString parameter, QString pa
         setPopUpMessage("Access Denied:\nThe Username or Password is incorrect.");
     }
 
+    if (nomAction == "Check Password")
+    {
+
+        if (parameter == m_user->getPassword())
+        {
+            setPopUpMessage("Password Approved!");
+
+        }
+        else
+        {
+            setPopUpMessage("Password is incorrect.");
+        }
+    }
+
 }
 
 

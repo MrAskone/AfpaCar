@@ -7,8 +7,10 @@ import QtQuick.Dialogs 1.2
 import "JSControls.js" as JSC
 
 Rectangle{
+
     anchors.fill: parent
     visible: false
+    onVisibleChanged: JSC.clearLoginFields()
 
     Text{
         id: loginPageTitle
@@ -30,16 +32,17 @@ Rectangle{
 
             Text{
                 text: "username:"
-                width: 40
-                height: 25
+                width: container.width / 10
+                height: container.height / 25
                 verticalAlignment: Text.AlignVCenter
             }
 
             TextField{
                 id: loginUsername
-                placeholderText: "username"
-                width: 100
-                height: 25
+                //                placeholderText: "username"
+                text: "kobamako"
+                width: container.width / 4
+                height: container.height / 25
                 validator:  RegExpValidator{ regExp: /[a-z A-Z]+/ }
                 maximumLength: 16
             }
@@ -50,23 +53,24 @@ Rectangle{
 
             Text{
                 text: "password:"
-                width: 40
-                height: 25
+                width: container.width / 10
+                height: container.height / 25
                 verticalAlignment: Text.AlignVCenter
             }
 
             TextField{
                 id: loginPassword
                 echoMode: "Password"
-                placeholderText: "password"
-                width: 100
-                height: 25
+                //                placeholderText: "password"
+                text: "cubanito"
+                width: container.width / 4
+                height: container.height / 25
 
                 maximumLength: 12
             }
         }
         Row{
-            spacing: container.width * 0.01
+            spacing: container.width * 0.02
             x: container.width/2 - 5 - 100
 
             MyButton{
@@ -89,16 +93,15 @@ Rectangle{
             MyButton{
                 text: "Sign Up"
                 onClicked: {
-                    JSC.changeWindowTo(loginPage)
+                    JSC.changeWindowTo(signupPage1)
                     console.log("Sign up")
                 }
             }
             Popup{
                 id: loginPopup
-                x: 200
-                y: 40
-                width: 200
-                height: 40
+//                rightMargin: container.width / 3
+//                leftMargin: container.width / 3
+//                bottomMargin: container.height / 2
                 modal: true
                 focus: true
 
@@ -112,5 +115,9 @@ Rectangle{
     NavButton{
         text: "Back"
         targetwindow: homePage
+        onClicked:
+        {
+            JSC.clearLoginFields()
+        }
     }
 }

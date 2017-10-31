@@ -9,8 +9,8 @@ import "JSControls.js" as JSC
 
 Window {
     visible: true
-    width: 550
-    height: 800
+    width: 384//400
+    height: 680//800
     title: qsTr("Hello World")
 
     Rectangle{

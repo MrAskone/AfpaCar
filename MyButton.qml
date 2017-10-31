@@ -3,9 +3,11 @@ import QtQuick.Controls 2.2
 
 Button {
     id: control
+    font.pixelSize: 14
+
     background: Rectangle {
-        implicitWidth: 100
-        implicitHeight: 20
+        implicitWidth: container.width / 4
+        implicitHeight: container.height / 25
         border.color: "#26282a"
         border.width: 1
         radius: 4

@@ -15,62 +15,80 @@ function changeWindowTo(windowName){
 
 }
 
+/////////////////////////////
+///Functions for LogInPage///
+/////////////////////////////
+
+function clearLoginFields(){
+
+    loginUsername.text = ""
+    loginPassword.text = ""
+
+}
+
+
+
+//////////////////////////////
+///Functions for SignUpPage///
+//////////////////////////////
+
+
 function allFieldsAreFilled(){
 
     var checkAllFields = true
-    var message = "The following fields were not filled properly:"
+    var message = "Incomplete fields:\n"
 
     if ( surnameTF.text.length == 0 )
     {
         checkAllFields = false
-        message += " Surname."
+        message += " Surname.\n"
     }
 
     if( firstnameTF.text.length == 0 )
     {
         checkAllFields = false
-        message += " First Name."
+        message += " First Name.\n"
     }
     if ( !maleRadio.checked && !femaleRadio.checked )
     {
         checkAllFields = false
-        message += " Gender."
+        message += " Gender.\n"
     }
 
     if ( dobTF.text.length < 10 )
     {
         checkAllFields = false
-        message += " Date of Birth."
+        message += " Date of Birth.\n"
     }
 
     if ( emailTF.text.indexOf("@") == -1 || emailTF.text.indexOf(".") == -1 || emailTF.text.length < 6)
     {
         checkAllFields = false
-        message += " Email."
+        message += " Email.\n"
     }
 
-    if ( phoneTF.text.length < 10 )
+    if ( phoneNumberTF.text.length < 10 )
     {
         checkAllFields = false
-        message += " Phone Number"
+        message += " Phone Number.\n"
     }
 
     if ( streetnumberTF.text.length == 0 || streettypeTF.text.length == 0 || streetnameTF.text.length == 0 || postcodeTF.text.length < 5 || cityTF.text.length == 0 )
     {
         checkAllFields = false
-        message += " Address."
+        message += " Address.\n"
     }
 
     if ( usernameTF.text.length < 6 )
     {
         checkAllFields = false
-        message += " Username."
+        message += " Username.\n"
     }
 
     if (passwordTF.text.length < 8)
     {
         checkAllFields = false
-        message += " Password."
+        message += " Password.\n"
     }
 
     if (checkAllFields == false)
@@ -84,14 +102,10 @@ function allFieldsAreFilled(){
 
 function submit(){
 
-    var formCompleted = allFieldsAreFilled()
-
-    if (formCompleted)
-    {
         MyContext.address.streetNumber = streetnumberTF.text
         MyContext.address.streetType = streettypeTF.text
         MyContext.address.streetName = streetnameTF.text
-        MyContext.address.postCode = postcodeTF.text
+        MyContext.address.postcode = postcodeTF.text
         MyContext.address.city = cityTF.text
 
         MyContext.profile.surname = surnameTF.text
@@ -113,14 +127,11 @@ function submit(){
 
         MyContext.profile.dob = dobTF.text
         MyContext.profile.email = emailTF.text
-        MyContext.profile.phoneNumber = phoneTF.text
+        MyContext.profile.phoneNumber = phoneNumberTF.text
 
         MyContext.user.username = usernameTF.text
         MyContext.user.password = passwordTF.text
 
-        console.log("Switching to Log In Page")
-//        changeWindowTo(loginPage)
-    }
 }
 
 function clearAllFields(){
@@ -131,7 +142,7 @@ function clearAllFields(){
     femaleRadio.checked = false
     dobTF.text = ""
     emailTF.text = ""
-    phoneTF.text = ""
+    phoneNumberTF.text = ""
     streetnumberTF.text = ""
     streettypeTF.text = ""
     streetnameTF.text = ""
@@ -143,6 +154,11 @@ function clearAllFields(){
 
     console.log("Sign up form cleared")
 }
+
+
+////////////////////////////////
+/// Functions for ProfilePage///
+////////////////////////////////
 
 function editModeOn(){
 
@@ -165,8 +181,8 @@ function editModeOn(){
     myEmailTF.visible = true
     myEmail.visible = false
 
-    myPhoneTF.visible = true
-    myPhone.visible = false
+    myPhoneNumberTF.visible = true
+    myPhoneNumber.visible = false
 
     myStreetnumberTF.visible = true
     myStreetnumber.visible = false
@@ -198,7 +214,7 @@ function editModeOff(){
     myFirstname.visible = true
 
     myMaleRadio.checkable = false
-    myFemaleRadio.checkable = true
+    myFemaleRadio.checkable = false
 
     myDobTF.visible = false
     myDob.visible = true
@@ -206,8 +222,8 @@ function editModeOff(){
     myEmailTF.visible = false
     myEmail.visible = true
 
-    myPhoneTF.visible = false
-    myPhone.visible = true
+    myPhoneNumberTF.visible = false
+    myPhoneNumber.visible = true
 
     myStreetnumberTF.visible = false
     myStreetnumber.visible = true
@@ -223,5 +239,106 @@ function editModeOff(){
 
     myCityTF.visible = false
     myCity.visible = true
+}
 
+function allFieldsAreFilledInEdit(){
+
+    var checkAllFields = true
+    var message = "Incomplete fields:\n"
+
+    if ( mySurnameTF.text.length == 0 )
+    {
+        checkAllFields = false
+        message += " Surname.\n"
+    }
+
+    if( myFirstnameTF.text.length == 0 )
+    {
+        checkAllFields = false
+        message += " First Name.\n"
+    }
+    if ( !myMaleRadio.checked && !myFemaleRadio.checked )
+    {
+        checkAllFields = false
+        message += " Gender.\n"
+    }
+
+    if ( myDobTF.text.length < 10 )
+    {
+        checkAllFields = false
+        message += " Date of Birth.\n"
+    }
+
+    if ( myEmailTF.text.indexOf("@") == -1 || myEmailTF.text.indexOf(".") == -1 || myEmailTF.text.length < 6)
+    {
+        checkAllFields = false
+        message += " Email.\n"
+    }
+
+    if ( myPhoneNumberTF.text.length < 10 )
+    {
+        checkAllFields = false
+        message += " Phone Number\n"
+    }
+
+    if ( myStreetnumberTF.text.length == 0 || myStreettypeTF.text.length == 0 || myStreetnameTF.text.length == 0 || myPostcodeTF.text.length < 5 || myCityTF.text.length == 0 )
+    {
+        checkAllFields = false
+        message += " Address.\n"
+    }
+
+    if (checkAllFields == false)
+    {
+        MyContext.setPopUpMessage(message)
+    }
+
+    return checkAllFields
+
+}
+
+function submitChanges(){
+
+    MyContext.address.streetNumber = myStreetnumberTF.text
+    MyContext.address.streetType = myStreettypeTF.text
+    MyContext.address.streetName = myStreetnameTF.text
+    MyContext.address.postcode = myPostcodeTF.text
+    MyContext.address.city = myCityTF.text
+
+    MyContext.profile.surname = mySurnameTF.text
+    MyContext.profile.firstName = myFirstnameTF.text
+
+    var gender = ""
+    if (myMaleRadio.checked)
+    {
+        gender = myMaleRadio.text
+    }
+    else
+    {
+        gender = myFemaleRadio.text
+    }
+
+    MyContext.profile.gender = gender
+
+    MyContext.profile.dob = myDobTF.text
+    MyContext.profile.email = myEmailTF.text
+    MyContext.profile.phoneNumber = myPhoneNumberTF.text
+
+}
+
+
+function returnToProfileView(){
+
+    if(MyContext.profile.gender == "Male")
+    {
+        myMaleRadio.checked = true
+        myFemaleRadio.checked = false
+    }
+
+    else
+    {
+        myMaleRadio.checked = false
+        myFemaleRadio.checked = true
+    }
+
+    editModeOff()
 }

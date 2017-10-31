@@ -26,12 +26,13 @@ Rectangle{
         anchors.margins: 10
 
         Row{
-            spacing: container.width * 0.01
-            x: container.width/2 - 5 - 100
+            spacing: container.width * 0.02
+            x: container.width/2 - loginButton.width - container.width * 0.02
 
             MyButton{
                 id: loginButton
                 text: "Log in"
+
                 onClicked:{
                     JSC.print("Log in Page Load")
                     JSC.changeWindowTo(loginPage)
@@ -41,6 +42,7 @@ Rectangle{
             MyButton{
                 id: signupButton
                 text: "Sign up"
+
                 onClicked:{
                     JSC.print("Sign up Page Load")
                     JSC.changeWindowTo(signupPage1)

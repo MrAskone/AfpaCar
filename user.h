@@ -19,7 +19,7 @@ class User : public QObject
 public:
     explicit User(QObject *parent = nullptr);
 
-    User::User(const QString &username, const QString &password, Profile* profile, QObject *parent = 0);
+    User(const QString &username, const QString &password, Profile* profile, QObject *parent = 0);
 
     User* createCopy();
 
