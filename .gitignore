@@ -3,3 +3,5 @@
 Makefil*
 debug/
 release/
+*.debug
+*.release
